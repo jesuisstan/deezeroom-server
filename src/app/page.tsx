@@ -1,65 +1,477 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+'use client';
+
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{' '}
-            center.
+    <div
+      style={{
+        minHeight: '100vh',
+        backgroundColor: '#0a0a0a',
+        color: '#e5e5e5',
+        padding: '2rem',
+        fontFamily: 'system-ui, -apple-system, sans-serif'
+      }}
+    >
+      <main
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '3rem'
+        }}
+      >
+        {/* Header */}
+        <header style={{ textAlign: 'center', padding: '2rem 0' }}>
+          <h1
+            style={{
+              fontSize: '3rem',
+              fontWeight: 'bold',
+              marginBottom: '1rem',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
+            DeezerRoom API Server
+          </h1>
+          <p
+            style={{
+              fontSize: '1.25rem',
+              color: '#a0a0a0',
+              maxWidth: '600px',
+              margin: '0 auto'
+            }}
+          >
+            GraphQL API server providing music data from Deezer API. Built with
+            Next.js and GraphQL Yoga.
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        </header>
+
+        {/* GraphQL Playground Card */}
+        <section
+          style={{
+            backgroundColor: '#1a1a1a',
+            borderRadius: '12px',
+            padding: '2rem',
+            border: '2px solid #667eea40'
+          }}
+        >
+          <h2
+            style={{
+              fontSize: '1.75rem',
+              fontWeight: '600',
+              marginBottom: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            🚀 GraphQL Playground
+          </h2>
+          <p style={{ color: '#a0a0a0', marginBottom: '1.5rem' }}>
+            Interactive API explorer with schema documentation and autocomplete.
+            Test queries directly in your browser.
+          </p>
+          <Link
+            href="/api/graphql"
+            style={{
+              display: 'inline-block',
+              padding: '0.75rem 1.5rem',
+              backgroundColor: '#667eea',
+              color: 'white',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontWeight: '600',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#5568d3';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#667eea';
+            }}
           >
-            Documentation
-          </a>
-        </div>
+            Open GraphQL Playground →
+          </Link>
+        </section>
+
+        {/* API Endpoint */}
+        <section
+          style={{
+            backgroundColor: '#1a1a1a',
+            borderRadius: '12px',
+            padding: '2rem'
+          }}
+        >
+          <h2
+            style={{
+              fontSize: '1.75rem',
+              fontWeight: '600',
+              marginBottom: '1rem'
+            }}
+          >
+            📡 API Endpoint
+          </h2>
+          <div
+            style={{
+              backgroundColor: '#0a0a0a',
+              padding: '1rem',
+              borderRadius: '8px',
+              border: '1px solid #333',
+              fontFamily: 'monospace',
+              fontSize: '0.9rem',
+              color: '#667eea',
+              wordBreak: 'break-all'
+            }}
+          >
+            /api/graphql
+          </div>
+        </section>
+
+        {/* Available Queries */}
+        <section
+          style={{
+            backgroundColor: '#1a1a1a',
+            borderRadius: '12px',
+            padding: '2rem'
+          }}
+        >
+          <h2
+            style={{
+              fontSize: '1.75rem',
+              fontWeight: '600',
+              marginBottom: '1.5rem'
+            }}
+          >
+            🔍 Available Queries
+          </h2>
+
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+          >
+            {/* searchTracks */}
+            <div
+              style={{
+                backgroundColor: '#0a0a0a',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                border: '1px solid #333'
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem'
+                }}
+              >
+                searchTracks
+              </h3>
+              <p
+                style={{
+                  color: '#a0a0a0',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Search for tracks by keyword
+              </p>
+              <ul
+                style={{
+                  color: '#a0a0a0',
+                  fontSize: '0.9rem',
+                  paddingLeft: '1.5rem',
+                  lineHeight: '1.8'
+                }}
+              >
+                <li>Parameters: query (String!), limit (Int), index (Int)</li>
+                <li>
+                  Returns: SearchTracksResult with tracks array, total count,
+                  hasMore flag
+                </li>
+                <li>Use case: Track search in events and playlists</li>
+              </ul>
+            </div>
+
+            {/* getPopularTracks */}
+            <div
+              style={{
+                backgroundColor: '#0a0a0a',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                border: '1px solid #333'
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem'
+                }}
+              >
+                getPopularTracks
+              </h3>
+              <p
+                style={{
+                  color: '#a0a0a0',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Get trending tracks from Deezer charts
+              </p>
+              <ul
+                style={{
+                  color: '#a0a0a0',
+                  fontSize: '0.9rem',
+                  paddingLeft: '1.5rem',
+                  lineHeight: '1.8'
+                }}
+              >
+                <li>Parameters: limit (Int), index (Int)</li>
+                <li>Returns: SearchTracksResult</li>
+                <li>Use case: Homepage recommendations</li>
+              </ul>
+            </div>
+
+            {/* track */}
+            <div
+              style={{
+                backgroundColor: '#0a0a0a',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                border: '1px solid #333'
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem'
+                }}
+              >
+                track
+              </h3>
+              <p
+                style={{
+                  color: '#a0a0a0',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Get track details by ID
+              </p>
+              <ul
+                style={{
+                  color: '#a0a0a0',
+                  fontSize: '0.9rem',
+                  paddingLeft: '1.5rem',
+                  lineHeight: '1.8'
+                }}
+              >
+                <li>Parameters: id (ID!)</li>
+                <li>Returns: Track object</li>
+                <li>Use case: Track detail view, playback</li>
+              </ul>
+            </div>
+
+            {/* searchArtists */}
+            <div
+              style={{
+                backgroundColor: '#0a0a0a',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                border: '1px solid #333'
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem'
+                }}
+              >
+                searchArtists
+              </h3>
+              <p
+                style={{
+                  color: '#a0a0a0',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Search for artists by name
+              </p>
+              <ul
+                style={{
+                  color: '#a0a0a0',
+                  fontSize: '0.9rem',
+                  paddingLeft: '1.5rem',
+                  lineHeight: '1.8'
+                }}
+              >
+                <li>Parameters: query (String!), limit (Int), index (Int)</li>
+                <li>Returns: SearchArtistsResult</li>
+                <li>Use case: Artist preferences, search</li>
+              </ul>
+            </div>
+
+            {/* artistsByIds */}
+            <div
+              style={{
+                backgroundColor: '#0a0a0a',
+                padding: '1.5rem',
+                borderRadius: '8px',
+                border: '1px solid #333'
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: '600',
+                  marginBottom: '0.5rem'
+                }}
+              >
+                artistsByIds
+              </h3>
+              <p
+                style={{
+                  color: '#a0a0a0',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Batch fetch artists by IDs
+              </p>
+              <ul
+                style={{
+                  color: '#a0a0a0',
+                  fontSize: '0.9rem',
+                  paddingLeft: '1.5rem',
+                  lineHeight: '1.8'
+                }}
+              >
+                <li>Parameters: ids ([ID!]!)</li>
+                <li>Returns: Array of Artist objects</li>
+                <li>Use case: Loading favorite artists</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Example Query */}
+        <section
+          style={{
+            backgroundColor: '#1a1a1a',
+            borderRadius: '12px',
+            padding: '2rem'
+          }}
+        >
+          <h2
+            style={{
+              fontSize: '1.75rem',
+              fontWeight: '600',
+              marginBottom: '1rem'
+            }}
+          >
+            💡 Example Query
+          </h2>
+          <div
+            style={{
+              backgroundColor: '#0a0a0a',
+              padding: '1.5rem',
+              borderRadius: '8px',
+              border: '1px solid #333',
+              fontFamily: 'monospace',
+              fontSize: '0.9rem',
+              color: '#a0a0a0',
+              overflowX: 'auto'
+            }}
+          >
+            <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>
+              {`query SearchTracks {
+  searchTracks(query: "jazz", limit: 10) {
+    tracks {
+      id
+      title
+      artist {
+        name
+      }
+    }
+    total
+    hasMore
+  }
+}`}
+            </pre>
+          </div>
+        </section>
+
+        {/* Quick Links */}
+        <section
+          style={{
+            backgroundColor: '#1a1a1a',
+            borderRadius: '12px',
+            padding: '2rem'
+          }}
+        >
+          <h2
+            style={{
+              fontSize: '1.75rem',
+              fontWeight: '600',
+              marginBottom: '1rem'
+            }}
+          >
+            🔗 Quick Links
+          </h2>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}
+          >
+            <Link
+              href="/api/graphql?query=%7BgetPopularTracks(limit:5)%7Btracks%7Bid%20title%20artist%7Bname%7Dalbum%7Btitle%7D%7D%7D%7D"
+              style={{ color: '#667eea', textDecoration: 'none' }}
+            >
+              🎵 Get popular tracks (example)
+            </Link>
+            <Link
+              href="/api/graphql?query=%7BsearchTracks(query:%22jazz%22,limit:5)%7Btracks%7Bid%20title%20artist%7Bname%7D%7Dtotal%7D%7D"
+              style={{ color: '#667eea', textDecoration: 'none' }}
+            >
+              🔍 Search tracks &quot;jazz&quot; (example)
+            </Link>
+            <Link
+              href="/api/graphql?query=%7BsearchArtists(query:%22daft%20punk%22,limit:3)%7Bartists%7Bid%20name%20picture%7D%7D%7D"
+              style={{ color: '#667eea', textDecoration: 'none' }}
+            >
+              🎤 Search artists &quot;daft punk&quot; (example)
+            </Link>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer
+          style={{
+            textAlign: 'center',
+            padding: '2rem 0',
+            color: '#666',
+            fontSize: '0.9rem',
+            borderTop: '1px solid #333'
+          }}
+        >
+          <p>
+            DeezerRoom API Server • Built with Next.js & GraphQL Yoga •{' '}
+            <a
+              href="https://github.com/jesuisstan/deezeroom-server"
+              style={{ color: '#667eea', textDecoration: 'none' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on GitHub
+            </a>
+          </p>
+        </footer>
       </main>
     </div>
   );
