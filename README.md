@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DeezerRoom Server
+
+GraphQL API server for DeezerRoom application.
+
+## Tech Stack
+
+- **Next.js 16** - React framework with App Router
+- **TypeScript** - Type safety
+- **GraphQL Yoga** - GraphQL server
+- **ESLint + Prettier** - Code quality and formatting
 
 ## Getting Started
 
-First, run the development server:
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Starts the development server at `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Code Quality
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Linting
 
-## Deploy on Vercel
+```bash
+npm run lint        # Check for linting errors
+npm run lint:fix    # Auto-fix linting errors
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Formatting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run format        # Format all files
+npm run format:check  # Check formatting without changes
+```
+
+## Project Structure
+
+```
+deezeroom-server/
+├── src/
+│   └── app/
+│       └── api/
+│           └── graphql/     # GraphQL API endpoint
+├── graphql/                 # GraphQL schema and resolvers
+├── services/                # Business logic (Deezer API integration)
+└── types/                   # TypeScript type definitions
+```
+
+## Environment Variables
+
+Create a `.env.local` file:
+
+```env
+# Add your environment variables here
+```
+
+## Deployment
+
+This project is configured for deployment on Vercel.
