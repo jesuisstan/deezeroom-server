@@ -452,13 +452,6 @@ export default function Home() {
               🎵 Get popular tracks (example)
             </Link>
             <Link
-              href="/api/graphql?query=%7BsearchTracks(query:%22jazz%22,limit:5)%7Btracks%7Bid%20title%20artist%7Bname%7D%7Dtotal%7D%7D"
-              style={{ color: '#00babc', textDecoration: 'none' }}
-              target="_blank"
-            >
-              🔍 Search tracks &quot;jazz&quot; (example)
-            </Link>
-            <Link
               href="/api/graphql?query=%7BsearchTracks(query:%22Hysteria%22,limit:5)%7Btracks%7Bid%20title%20artist%7Bname%7D%7Dtotal%7D%7D"
               style={{ color: '#00babc', textDecoration: 'none' }}
               target="_blank"
