@@ -459,11 +459,25 @@ export default function Home() {
               🔍 Search tracks &quot;jazz&quot; (example)
             </Link>
             <Link
+              href="/api/graphql?query=%7BsearchTracks(query:%22Hysteria%22,limit:5)%7Btracks%7Bid%20title%20artist%7Bname%7D%7Dtotal%7D%7D"
+              style={{ color: '#00babc', textDecoration: 'none' }}
+              target="_blank"
+            >
+              🔍 Search tracks &quot;Hysteria&quot; (example)
+            </Link>
+            <Link
               href="/api/graphql?query=%7BsearchArtists(query:%22daft%20punk%22,limit:3)%7Bartists%7Bid%20name%20picture%7D%7D%7D"
               style={{ color: '#00babc', textDecoration: 'none' }}
               target="_blank"
             >
               🎤 Search artists &quot;daft punk&quot; (example)
+            </Link>
+            <Link
+              href="/api/graphql?query=%7Btrack(id:%223135556%22)%7Bid%20title%20duration%20preview%20artist%7Bid%20name%20picture%7Dalbum%7Bid%20title%20cover%7D%7D%7D"
+              style={{ color: '#00babc', textDecoration: 'none' }}
+              target="_blank"
+            >
+              🎵 Get track by ID 3135556 (example)
             </Link>
           </div>
         </section>
