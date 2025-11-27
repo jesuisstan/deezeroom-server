@@ -1,14 +1,15 @@
 'use client';
 
 import Link from 'next/link';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
     <div
       style={{
         minHeight: '100vh',
-        backgroundColor: '#0a0a0a',
-        color: '#e5e5e5',
+        backgroundColor: '#0f0d13',
+        color: '#fdfcfe',
         padding: '2rem',
         fontFamily: 'system-ui, -apple-system, sans-serif'
       }}
@@ -29,7 +30,7 @@ export default function Home() {
               fontSize: '3rem',
               fontWeight: 'bold',
               marginBottom: '1rem',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'linear-gradient(135deg, #a238ff 0%, #00babc 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -40,13 +41,26 @@ export default function Home() {
           <p
             style={{
               fontSize: '1.25rem',
-              color: '#a0a0a0',
-              maxWidth: '600px',
+              color: '#eae8ec',
+              maxWidth: '900px',
               margin: '0 auto'
             }}
           >
-            GraphQL API server providing music data from Deezer API. Built with
-            Next.js and GraphQL Yoga.
+            GraphQL API server providing data from{' '}
+            <a
+              href="https://developers.deezer.com/api"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: '#a238ff',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Deezer Developers API
+            </a>
+            .
+            <br /> Built with Next.js and GraphQL Yoga.
           </p>
         </header>
 
@@ -56,7 +70,7 @@ export default function Home() {
             backgroundColor: '#1a1a1a',
             borderRadius: '12px',
             padding: '2rem',
-            border: '2px solid #667eea40'
+            border: '2px solid #00babc40'
           }}
         >
           <h2
@@ -71,16 +85,17 @@ export default function Home() {
           >
             🚀 GraphQL Playground
           </h2>
-          <p style={{ color: '#a0a0a0', marginBottom: '1.5rem' }}>
+          <p style={{ color: '#eae8ec', marginBottom: '1.5rem' }}>
             Interactive API explorer with schema documentation and autocomplete.
             Test queries directly in your browser.
           </p>
           <Link
             href="/api/graphql"
+            target="_blank"
             style={{
               display: 'inline-block',
               padding: '0.75rem 1.5rem',
-              backgroundColor: '#667eea',
+              backgroundColor: '#00babc',
               color: 'white',
               borderRadius: '8px',
               textDecoration: 'none',
@@ -88,10 +103,10 @@ export default function Home() {
               transition: 'background-color 0.2s'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#5568d3';
+              e.currentTarget.style.backgroundColor = '#a238ff';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#667eea';
+              e.currentTarget.style.backgroundColor = '#00babc';
             }}
           >
             Open GraphQL Playground →
@@ -117,13 +132,13 @@ export default function Home() {
           </h2>
           <div
             style={{
-              backgroundColor: '#0a0a0a',
+              backgroundColor: '#0f0d13',
               padding: '1rem',
               borderRadius: '8px',
-              border: '1px solid #333',
+              border: '1px solid #29282d',
               fontFamily: 'monospace',
               fontSize: '0.9rem',
-              color: '#667eea',
+              color: '#00babc',
               wordBreak: 'break-all'
             }}
           >
@@ -155,10 +170,10 @@ export default function Home() {
             {/* searchTracks */}
             <div
               style={{
-                backgroundColor: '#0a0a0a',
+                backgroundColor: '#0f0d13',
                 padding: '1.5rem',
                 borderRadius: '8px',
-                border: '1px solid #333'
+                border: '1px solid #29282d'
               }}
             >
               <h3
@@ -172,7 +187,7 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   marginBottom: '1rem',
                   fontSize: '0.9rem'
                 }}
@@ -181,7 +196,7 @@ export default function Home() {
               </p>
               <ul
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   fontSize: '0.9rem',
                   paddingLeft: '1.5rem',
                   lineHeight: '1.8'
@@ -199,10 +214,10 @@ export default function Home() {
             {/* getPopularTracks */}
             <div
               style={{
-                backgroundColor: '#0a0a0a',
+                backgroundColor: '#0f0d13',
                 padding: '1.5rem',
                 borderRadius: '8px',
-                border: '1px solid #333'
+                border: '1px solid #29282d'
               }}
             >
               <h3
@@ -216,7 +231,7 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   marginBottom: '1rem',
                   fontSize: '0.9rem'
                 }}
@@ -225,7 +240,7 @@ export default function Home() {
               </p>
               <ul
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   fontSize: '0.9rem',
                   paddingLeft: '1.5rem',
                   lineHeight: '1.8'
@@ -240,10 +255,10 @@ export default function Home() {
             {/* track */}
             <div
               style={{
-                backgroundColor: '#0a0a0a',
+                backgroundColor: '#0f0d13',
                 padding: '1.5rem',
                 borderRadius: '8px',
-                border: '1px solid #333'
+                border: '1px solid #29282d'
               }}
             >
               <h3
@@ -257,7 +272,7 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   marginBottom: '1rem',
                   fontSize: '0.9rem'
                 }}
@@ -266,7 +281,7 @@ export default function Home() {
               </p>
               <ul
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   fontSize: '0.9rem',
                   paddingLeft: '1.5rem',
                   lineHeight: '1.8'
@@ -281,10 +296,10 @@ export default function Home() {
             {/* searchArtists */}
             <div
               style={{
-                backgroundColor: '#0a0a0a',
+                backgroundColor: '#0f0d13',
                 padding: '1.5rem',
                 borderRadius: '8px',
-                border: '1px solid #333'
+                border: '1px solid #29282d'
               }}
             >
               <h3
@@ -298,7 +313,7 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   marginBottom: '1rem',
                   fontSize: '0.9rem'
                 }}
@@ -307,7 +322,7 @@ export default function Home() {
               </p>
               <ul
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   fontSize: '0.9rem',
                   paddingLeft: '1.5rem',
                   lineHeight: '1.8'
@@ -322,10 +337,10 @@ export default function Home() {
             {/* artistsByIds */}
             <div
               style={{
-                backgroundColor: '#0a0a0a',
+                backgroundColor: '#0f0d13',
                 padding: '1.5rem',
                 borderRadius: '8px',
-                border: '1px solid #333'
+                border: '1px solid #29282d'
               }}
             >
               <h3
@@ -339,7 +354,7 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   marginBottom: '1rem',
                   fontSize: '0.9rem'
                 }}
@@ -348,7 +363,7 @@ export default function Home() {
               </p>
               <ul
                 style={{
-                  color: '#a0a0a0',
+                  color: '#eae8ec',
                   fontSize: '0.9rem',
                   paddingLeft: '1.5rem',
                   lineHeight: '1.8'
@@ -381,13 +396,13 @@ export default function Home() {
           </h2>
           <div
             style={{
-              backgroundColor: '#0a0a0a',
+              backgroundColor: '#0f0d13',
               padding: '1.5rem',
               borderRadius: '8px',
-              border: '1px solid #333',
+              border: '1px solid #29282d',
               fontFamily: 'monospace',
               fontSize: '0.9rem',
-              color: '#a0a0a0',
+              color: '#eae8ec',
               overflowX: 'auto'
             }}
           >
@@ -431,19 +446,22 @@ export default function Home() {
           >
             <Link
               href="/api/graphql?query=%7BgetPopularTracks(limit:5)%7Btracks%7Bid%20title%20artist%7Bname%7Dalbum%7Btitle%7D%7D%7D%7D"
-              style={{ color: '#667eea', textDecoration: 'none' }}
+              style={{ color: '#00babc', textDecoration: 'none' }}
+              target="_blank"
             >
               🎵 Get popular tracks (example)
             </Link>
             <Link
               href="/api/graphql?query=%7BsearchTracks(query:%22jazz%22,limit:5)%7Btracks%7Bid%20title%20artist%7Bname%7D%7Dtotal%7D%7D"
-              style={{ color: '#667eea', textDecoration: 'none' }}
+              style={{ color: '#00babc', textDecoration: 'none' }}
+              target="_blank"
             >
               🔍 Search tracks &quot;jazz&quot; (example)
             </Link>
             <Link
               href="/api/graphql?query=%7BsearchArtists(query:%22daft%20punk%22,limit:3)%7Bartists%7Bid%20name%20picture%7D%7D%7D"
-              style={{ color: '#667eea', textDecoration: 'none' }}
+              style={{ color: '#00babc', textDecoration: 'none' }}
+              target="_blank"
             >
               🎤 Search artists &quot;daft punk&quot; (example)
             </Link>
@@ -451,27 +469,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer
-          style={{
-            textAlign: 'center',
-            padding: '2rem 0',
-            color: '#666',
-            fontSize: '0.9rem',
-            borderTop: '1px solid #333'
-          }}
-        >
-          <p>
-            DeezerRoom API Server • Built with Next.js & GraphQL Yoga •{' '}
-            <a
-              href="https://github.com/jesuisstan/deezeroom-server"
-              style={{ color: '#667eea', textDecoration: 'none' }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on GitHub
-            </a>
-          </p>
-        </footer>
+        <Footer />
       </main>
     </div>
   );

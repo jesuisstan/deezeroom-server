@@ -1,6 +1,6 @@
 # DeezerRoom Server
 
-GraphQL API server for DeezerRoom application.
+GraphQL API server for [DeezerRoom](https://deezeroom.expo.app) [application](https://github.com/jesuisstan/deezeroom).
 
 ## Tech Stack
 
@@ -23,91 +23,113 @@ npm install
 npm run dev
 ```
 
-Starts the development server at `http://localhost:3000` (or `http://0.0.0.0:3000`)
+Starts the development server at `http://localhost:3000` (accessible from all network interfaces `0.0.0.0`)
 
-The server listens on all network interfaces (`0.0.0.0`) by default, making it accessible from other devices on your local network.
+**Use specific IP address:**
 
-**Customization options:**
+**Bash (Linux/Mac):**
 
-- **Change port:**
+```bash
+npm run dev -- -H 192.168.1.100
+```
 
-  **Bash (Linux/Mac):**
+**PowerShell (Windows):**
 
+```powershell
+npx next dev -H 192.168.1.100
+```
+
+**Use custom port:**
+
+**Bash (Linux/Mac):**
+
+```bash
+PORT=8080 npm run dev
+```
+
+**PowerShell (Windows):**
+
+```powershell
+$env:PORT=8080; npm run dev
+```
+
+**Combine port and IP:**
+
+**Bash (Linux/Mac):**
+
+```bash
+PORT=8080 npm run dev -- -H 192.168.1.100
+```
+
+**PowerShell (Windows):**
+
+```powershell
+$env:PORT=8080; npx next dev -H 192.168.1.100
+```
+
+#### Development with Tunnel (Different Networks)
+
+When your phone and development machine are on different networks (e.g., at School 42), you need to create a tunnel for the GraphQL server:
+
+**Prerequisites:**
+
+- Install `ngrok` globally:
   ```bash
-  PORT=8080 npm run dev
+  npm install -g ngrok
   ```
-
-  **Note:** In bash, `PORT=8080 npm run dev` sets the variable only for that command. If you used `export PORT=8080`, reset it with:
-
+- Create an account at [ngrok.com](https://ngrok.com/) and get your `authtoken`
+- Configure ngrok with your authtoken (one-time setup):
   ```bash
-  unset PORT
+  ngrok config add-authtoken <your-authtoken>
   ```
 
-  **PowerShell (Windows):**
+**Start server and tunnel (two terminals):**
 
-  ```powershell
-  $env:PORT=8080; npm run dev
-  ```
+**Terminal 1 - Start the server:**
 
-  **To reset to default port (3000):**
+```bash
+npm run dev
+```
 
-  **Bash (Linux/Mac):**
+**Terminal 2 - Create tunnel:**
 
-  ```bash
-  unset PORT
-  ```
+```bash
+ngrok http 3000
+```
 
-  **PowerShell (Windows):**
+**Important:** Copy the ngrok URL (e.g., `https://xxxx-xx-xx-xx-xx.ngrok-free.app`) and set it as `EXPO_PUBLIC_SERVER_URL` in your `deezeroom` client `.env` file:
 
-  ```powershell
-  Remove-Item env:PORT
-  # or
-  $env:PORT = $null
-  ```
+```env
+EXPO_PUBLIC_SERVER_URL=https://xxxx-xx-xx-xx-xx.ngrok-free.app
+```
 
-  After resetting, `npm run dev` will use the default port 3000.
+**Note:** The ngrok URL changes each time you restart the tunnel. You'll need to update `EXPO_PUBLIC_SERVER_URL` accordingly.
 
-- **Use specific IP address:**
+**For custom port (e.g., 8080):**
 
-  **Bash (Linux/Mac):**
+If you need to use a different port, start the server with that port and create a tunnel to it:
 
-  ```bash
-  npm run dev -- -H 192.168.1.100
-  ```
+**Terminal 1:**
 
-  **PowerShell (Windows):**
+```bash
+PORT=8080 npm run dev
+```
 
-  ```powershell
-  npx next dev -H 192.168.1.100
-  ```
+**Terminal 2:**
 
-  Or combine with port:
+```bash
+ngrok http 8080
+```
 
-  **Bash (Linux/Mac):**
+**PowerShell (Windows):**
 
-  ```bash
-  PORT=8080 npm run dev -- -H 192.168.1.100
-  ```
+```powershell
+# Terminal 1
+$env:PORT=8080; npm run dev
 
-  **PowerShell (Windows):**
-
-  ```powershell
-  $env:PORT=8080; npx next dev -H 192.168.1.100
-  ```
-
-- **Restrict to localhost only:**
-
-  **Bash (Linux/Mac):**
-
-  ```bash
-  npm run dev -- -H localhost
-  ```
-
-  **PowerShell (Windows):**
-
-  ```powershell
-  npx next dev -H localhost
-  ```
+# Terminal 2
+ngrok http 8080
+```
 
 **Note:** In production mode (`npm start`), you can set both `PORT` and `HOSTNAME` via environment variables:
 
@@ -216,3 +238,36 @@ To deploy:
 3. Vercel will automatically detect Next.js and deploy
 
 The deployed URL will be provided by Vercel and can be used as `EXPO_PUBLIC_APP_URL` in your `deezeroom` client application.
+
+## Example: Running Server with Tunnel on Custom IP and Port
+
+**Scenario:** Start server on `localhost:3000` with ngrok tunnel for remote access.
+
+**Step 1:** Setup ngrok (one-time):
+
+```bash
+npm install -g ngrok
+ngrok config add-authtoken <your-authtoken>
+```
+
+**Step 2:** Start server (Terminal 1):
+
+**Bash (Linux/Mac):**
+
+```bash
+npm run dev
+```
+
+**Step 3:** Create tunnel (Terminal 2):
+
+```bash
+ngrok http 3000
+```
+
+**Step 4:** Copy ngrok URL (e.g., `https://xxxx-xx-xx-xx-xx.ngrok-free.app`) and set in `deezeroom/.env`:
+
+```env
+EXPO_PUBLIC_SERVER_URL=https://xxxx-xx-xx-xx-xx.ngrok-free.app
+```
+
+**Note:** ngrok tunnels to `localhost`, so use port `3000` (not IP) in the ngrok command.
